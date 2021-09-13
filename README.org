@@ -1,8 +1,8 @@
 * csv2bufr
 
-PROMICE/GC-NET data transformation to WMO-compliant .bufr format
+Repository for PROMICE/GC-NET data transformation to WMO-compliant .bufr format
 
-+ https://confluence.ecmwf.int/display/BUFR/BUFRDC+Homen
++ https://confluence.ecmwf.int/pages/viewpage.action?pageId=35752427
 
 ** Eccodes set-up
 The main package needed to perform BUFR encoding and decoding is called [[https://confluence.ecmwf.int/display/ECC/ecCodes+installation][eccodes]].
