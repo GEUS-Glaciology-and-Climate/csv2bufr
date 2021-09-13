@@ -4,3 +4,29 @@ PROMICE/GC-NET data transformation to WMO-compliant .bufr format
 
 + https://confluence.ecmwf.int/display/BUFR/BUFRDC+Homen
 
+** Eccodes set-up
+The main package needed to perform BUFR encoding and decoding is called [[https://confluence.ecmwf.int/display/ECC/ecCodes+installation][eccodes]].
+
+Eccodes is the official package for WMO BUFR file construction. Eccodes can be installed using conda like this:
+#+BEGIN_SRC bash
+conda install -c conda-forge eccodes
+#+END_SRC
+However, conda may not be able to solve the environment and install eccodes with the python bindings. If this is the case then follow the steps documented [[https://gist.github.com/MHBalsmeier/a01ad4e07ecf467c90fad2ac7719844a][here]] to download eccodes, and then install eccodes' python bindings using pip:
+#+BEGIN_SRC bash
+pip3 install eccodes-python
+#+END_SRC
+
+** csv2bufr.py
+This is current the playground script for converting .txt/.csv files to WMO-compliant BUFR files. You just need some hourly PROMICE/GC-Net data to run - the script will look for filenames in a given directory containing the string 'hour' (e.g. "CEN_hour_v03.txt").
+
+The script is based on one of the useful tutorials from the eccodes website [[https://confluence.ecmwf.int/display/UDOC/How+do+I+create+BUFR+from+a+CSV+-+ecCodes+BUFR+FAQ][here]].
+
+** variables_bufr.csv lookup table
+The lookup table is used to map variables from the PROMICE/GC-Net station to complaint BUFR message variables. If a name is not given in the standard_names column then the script will not write the variable to the BUFR message. Currently there are some issues with -9999 values, so some variables have not been flagged for writing yet. 
+
+** Notes on the BUFR format
+One BUFR message is written per observation (i.e. one row). A BUFR file can hold many (many) messages.
+
+Different template descriptors can be used within the standard WMO BUFR format, based on the type and setting of the observation station. A list of all templates is available [[https://confluence.ecmwf.int/display/ECC/BUFR+templates][here]]. My best guess at the moment is that the PROMICE/GC-Net stations fit with the surfaceObservationOneHour [[https://wmoomm.sharepoint.com/:w:/s/wmocpdb/ESfVFQ9_YKtLpOwuKVdoeAwBF3P2C7H4yyFj-6NDezcKog?rtime=Nx3AiY922Ug][template]] (id 307091/307092). However, this should be discussed with someone more knowledgeable before moving forward.
+
+
