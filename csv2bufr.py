@@ -43,7 +43,7 @@ def getTXT(filename, delim='\s+'):
     return df
 
 
-def setBUFRvalue(ibufr, b_name, value):
+def setBUFRvalue(ibufr, b_name, value, nullvalue=-999):
     '''Set variable in BUFR message
     
     Variables
@@ -51,13 +51,20 @@ def setBUFRvalue(ibufr, b_name, value):
     b_name (str)            BUFR message variable name
     value (int/float)       Value to be assigned to variable
     '''
-    try:
-        codes_set(ibufr, b_name, value)
-    except:
-        pass
+    nullFlag=False
+    if isinstance(value, int) or isinstance(value, float):
+        if value==nullvalue:
+            nullFlag=True
+            # print('Null value found in ' + str(b_name))
+    if nullFlag==False:
+        try:
+            codes_set(ibufr, b_name, value)
+        except CodesInternalError as ec:
+            print(ec)
     
 
-def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, template=307092, key='unexpandedDescriptors'):
+def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31, 
+            template=307092, key='unexpandedDescriptors'):
     '''Construct and export .bufr messages to file from DataFrame.
     
     Variables
@@ -115,27 +122,32 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, template=307092, key='un
             codes_set(ibufr, key, ivalues) 
                   
             #Data Description and Binary Data section
+            #Set AWS station info
+            # codes_set(ibufr, 'blockNumber', int(r1[5]))
+            # codes_set(ibufr, 'stationNumber', int(r1[6]))
+            codes_set(ibufr, 'longStationName', sname) 
+
+            #Set AWS variables
             for i2, r2 in df2.iterrows():
                 
                 #Write value only if lookup table variable name is present
                 if pd.isnull(r2['standard_name']) is False:
-                    
                     #Assign value based on type defined in lookup table
                     if str(r2['type']) in 'int':
-                        codes_set(ibufr, r2['standard_name'], int(r1[r2['CSV_column']]))
+                        setBUFRvalue(ibufr, r2['standard_name'], int(r1[r2['CSV_column']]))   
                     elif str(r2['type']) in 'float':
-                        codes_set(ibufr, r2['standard_name'], float(r1[r2['CSV_column']]))                    
-                    elif str(r2['type']) in 'str':
-                        codes_set(ibufr, r2['standard_name'], str(r1[r2['CSV_column']]))                      
-                               
+                        setBUFRvalue(ibufr, r2['standard_name'], float(r1[r2['CSV_column']]))                   
+                    elif str(r2['type']) in 'str':                   
+                        setBUFRvalue(ibufr, r2['standard_name'], str(r1[r2['CSV_column']])) 
+               
             # codes_set(ibufr, 'year', int(r1['Year']))
             # codes_set(ibufr, 'month', int(r1['MonthOfYear']))
             # codes_set(ibufr, 'day', int(r1['DayOfMonth']))
             # codes_set(ibufr, 'hour', int(r1['HourOfDay(UTC)']))
-            # # codes_set(ibufr, 'minute', int(r1[4]))
-            # # codes_set(ibufr, 'blockNumber', int(r1[5]))
-            # # codes_set(ibufr, 'stationNumber', int(r1[6]))
-            # # codes_set(ibufr, 'longStationName',r1[7].strip())
+            # codes_set(ibufr, 'minute', int(r1[4]))
+            # codes_set(ibufr, 'blockNumber', int(r1[5]))
+            # codes_set(ibufr, 'stationNumber', int(r1[6]))
+            # codes_set(ibufr, 'longStationName',r1[7].strip())
             # codes_set(ibufr, 'latitude', float(r1['LatitudeGPS(degN)']))
             # codes_set(ibufr, 'longitude', float(r1['LongitudeGPS(degW)']))
             # codes_set(ibufr, 'heightOfStationGroundAboveMeanSeaLevel', float(r1['ElevationGPS(m)']))
@@ -143,10 +155,10 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, template=307092, key='un
             # # codes_set(ibufr, 'pressureReducedToMeanSeaLevel', float(r1[12]))
             # codes_set(ibufr, 'airTemperature', float(r1['AirTemperature(C)']))
             # codes_set(ibufr, 'relativeHumidity', float(r1['RelativeHumidity(%)']))
-            # # codes_set(ibufr, '#2#timePeriod', -10)                                           # -10: Period of precipitation observation is 10 minutes
-            # # codes_set(ibufr, 'totalPrecipitationOrTotalWaterEquivalent', float(r1[15]))
-            # # codes_set(ibufr, '#1#timeSignificance', 2)                                       # 2: Time averaged
-            # # codes_set(ibufr, '#3#timePeriod', -10)                                           # -10: Period of wind observations is 10 minutes
+            # codes_set(ibufr, '#2#timePeriod', -10)                                           # -10: Period of precipitation observation is 10 minutes
+            # codes_set(ibufr, 'totalPrecipitationOrTotalWaterEquivalent', float(r1[15]))
+            # codes_set(ibufr, '#1#timeSignificance', 2)                                       # 2: Time averaged
+            # codes_set(ibufr, '#3#timePeriod', -10)                                           # -10: Period of wind observations is 10 minutes
             # codes_set(ibufr, 'windDirection', float(r1['WindDirection(d)']))
             # codes_set(ibufr, 'windSpeed', float(r1['WindSpeed(m/s)']))   
  
@@ -167,7 +179,7 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, template=307092, key='un
 #------------------------------------------------------------------------------
 
 if __name__ == '__main__':
- 
+
     #Get all txt files in directory
     txtFiles = glob.glob ('./*hour*')
     
@@ -185,7 +197,7 @@ if __name__ == '__main__':
         df1 = getTXT(fname)
         
         #Construct and export BUFR file
-        getBUFR(df1, lookup, bufrname)
-        print(f'Successfully export bufr file to {bufrname}')   
+        getBUFR(df1, lookup, bufrname, sname=str(bufrname.split('.bufr')[0]))
+        print(f'Successfully exported bufr file to {bufrname}')   
         
     print('Finished')

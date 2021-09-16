@@ -10,8 +10,8 @@ AirTemperature(C),,float
 AirTemperatureHygroClip(C),,
 RelativeHumidity(%),relativeHumidity,float
 SpecificHumidity(g/kg),,
-WindSpeed(m/s),,float
-WindDirection(d),,float
+WindSpeed(m/s),windSpeed,float
+WindDirection(d),windDirection,float
 SensibleHeatFlux(W/m2),,
 LatentHeatFlux(W/m2),,
 ShortwaveRadiationDown(W/m2),,
@@ -38,9 +38,9 @@ IceTemperature8(C),,
 TiltToEast(d),,
 TiltToNorth(d),,
 TimeGPS(hhmmssUTC),,
-LatitudeGPS(degN),,float
-LongitudeGPS(degW),,float
-ElevationGPS(m),,float
+LatitudeGPS(degN),latitude,float
+LongitudeGPS(degW),longitude,float
+ElevationGPS(m),heightOfStationGroundAboveMeanSeaLevel,float
 HorDilOfPrecGPS,,
 LoggerTemperature(C),,
 FanCurrent(mA),,
