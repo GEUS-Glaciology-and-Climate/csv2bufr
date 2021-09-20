@@ -140,27 +140,10 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
                     elif str(r2['type']) in 'str':                   
                         setBUFRvalue(ibufr, r2['standard_name'], str(r1[r2['CSV_column']])) 
                
-            # codes_set(ibufr, 'year', int(r1['Year']))
-            # codes_set(ibufr, 'month', int(r1['MonthOfYear']))
-            # codes_set(ibufr, 'day', int(r1['DayOfMonth']))
-            # codes_set(ibufr, 'hour', int(r1['HourOfDay(UTC)']))
-            # codes_set(ibufr, 'minute', int(r1[4]))
-            # codes_set(ibufr, 'blockNumber', int(r1[5]))
-            # codes_set(ibufr, 'stationNumber', int(r1[6]))
-            # codes_set(ibufr, 'longStationName',r1[7].strip())
-            # codes_set(ibufr, 'latitude', float(r1['LatitudeGPS(degN)']))
-            # codes_set(ibufr, 'longitude', float(r1['LongitudeGPS(degW)']))
-            # codes_set(ibufr, 'heightOfStationGroundAboveMeanSeaLevel', float(r1['ElevationGPS(m)']))
-            # codes_set(ibufr, 'pressure', float(r1['AirPressure(hPa)']))
-            # # codes_set(ibufr, 'pressureReducedToMeanSeaLevel', float(r1[12]))
-            # codes_set(ibufr, 'airTemperature', float(r1['AirTemperature(C)']))
-            # codes_set(ibufr, 'relativeHumidity', float(r1['RelativeHumidity(%)']))
             # codes_set(ibufr, '#2#timePeriod', -10)                                           # -10: Period of precipitation observation is 10 minutes
-            # codes_set(ibufr, 'totalPrecipitationOrTotalWaterEquivalent', float(r1[15]))
             # codes_set(ibufr, '#1#timeSignificance', 2)                                       # 2: Time averaged
             # codes_set(ibufr, '#3#timePeriod', -10)                                           # -10: Period of wind observations is 10 minutes
-            # codes_set(ibufr, 'windDirection', float(r1['WindDirection(d)']))
-            # codes_set(ibufr, 'windSpeed', float(r1['WindSpeed(m/s)']))   
+  
  
             #Encode keys in data section
             codes_set(ibufr, 'pack', 1)                                            
