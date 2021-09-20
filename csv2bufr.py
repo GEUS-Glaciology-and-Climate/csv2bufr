@@ -61,6 +61,16 @@ def setBUFRvalue(ibufr, b_name, value, nullvalue=-999):
             codes_set(ibufr, b_name, value)
         except CodesInternalError as ec:
             print(ec)
+
+
+def getTempK(tempC, nullvalue=-999):
+    for idx in tempC.index:
+        print(tempC['AirTemperatureC'][idx])
+     
+
+        #tempC['AirTemperature(C)'] = tempC['AirTemperature(C)'] + 
+
+    return tempC
     
 
 def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31, 
@@ -125,7 +135,8 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
             #Set AWS station info
             # codes_set(ibufr, 'blockNumber', int(r1[5]))
             # codes_set(ibufr, 'stationNumber', int(r1[6]))
-            codes_set(ibufr, 'longStationName', sname) 
+            if sname is not None:
+                codes_set(ibufr, 'longStationName', sname) 
 
             #Set AWS variables
             for i2, r2 in df2.iterrows():
@@ -178,9 +189,10 @@ if __name__ == '__main__':
     
         #Get text file
         df1 = getTXT(fname)
-        
-        #Construct and export BUFR file
-        getBUFR(df1, lookup, bufrname, sname=str(bufrname.split('.bufr')[0]))
-        print(f'Successfully exported bufr file to {bufrname}')   
+        temp = df1['AirTemperature(C)']
+        temp1 = getTempK(temp)
+        # #Construct and export BUFR file
+        # getBUFR(df1, lookup, bufrname, sname=str(bufrname.split('.bufr')[0]))
+        # print(f'Successfully exported bufr file to {bufrname}')   
         
     print('Finished')
