@@ -23,9 +23,9 @@ https://confluence.ecmwf.int/display/UDOC/How+do+I+create+BUFR+from+a+CSV+-+ecCo
     
 """
 import pandas as pd
-# import xarray as xr
-import glob
-from eccodes import codes_set, codes_write, codes_release, codes_bufr_new_from_samples, CodesInternalError
+import glob, os
+from eccodes import codes_set, codes_write, codes_release, \
+                    codes_bufr_new_from_samples, CodesInternalError
 # from pybufrkit.encoder import Encoder
 
 #------------------------------------------------------------------------------
@@ -47,9 +47,10 @@ def setBUFRvalue(ibufr, b_name, value, nullvalue=-999):
     '''Set variable in BUFR message
     
     Variables
-    ibufr ()                Active BUFR message 
-    b_name (str)            BUFR message variable name
-    value (int/float)       Value to be assigned to variable
+    ibufr ()                    Active BUFR message 
+    b_name (str)                BUFR message variable name
+    value (int/float)           Value to be assigned to variable
+    nullvalue (int/float)       Null value to be assigned to variable
     '''
     nullFlag=False
     if isinstance(value, int) or isinstance(value, float):
@@ -60,21 +61,29 @@ def setBUFRvalue(ibufr, b_name, value, nullvalue=-999):
         try:
             codes_set(ibufr, b_name, value)
         except CodesInternalError as ec:
-            print(ec)
+            print(f'{ec}: {b_name}')
 
 
-def getTempK(tempC, nullvalue=-999):
-    for idx in tempC.index:
-        print(tempC['AirTemperatureC'][idx])
-     
+def getTempK(row, nullvalue=-999):
+    '''Convert temperature from celsius to kelvin units    
+    '''
+    if row['AirTemperature(C)'] == nullvalue:
+        return nullvalue
+    else:
+        return row['AirTemperature(C)'] + 273.15
 
-        #tempC['AirTemperature(C)'] = tempC['AirTemperature(C)'] + 
 
-    return tempC
+def getPressPa(row, nullvalue=-999):
+    '''Convert hPa pressure values to Pa units   
+    '''
+    if row['AirPressure(hPa)'] == nullvalue:
+        return nullvalue
+    else:
+        return row['AirPressure(hPa)']*100
     
 
-def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31, 
-            template=307092, key='unexpandedDescriptors'):
+def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, 
+            template=307090, key='unexpandedDescriptors'):
     '''Construct and export .bufr messages to file from DataFrame.
     
     Variables
@@ -93,7 +102,7 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
 
     #Open bufr file
     fout = open(outBUFR, 'wb')
-    
+       
     #Iterate over rows in weather observations dataframe
     for i1, r1 in df1.iterrows():
 
@@ -114,7 +123,7 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
             codes_set(ibufr, 'updateSequenceNumber', 0)
             codes_set(ibufr, 'dataCategory', 0)                                #0 = Surface data, land
             codes_set(ibufr, 'internationalDataSubCategory', 7)                #7 = n-min obs from AWS stations
-            codes_set(ibufr, 'dataSubCategory', 7)
+            codes_set(ibufr, 'dataSubCategory', 7)                             #3-5=mobile; 0-2=fixed
     
             codes_set(ibufr, 'observedData', 1)
             codes_set(ibufr, 'compressedData', 0)
@@ -123,26 +132,31 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
             codes_set(ibufr, 'typicalDay', int(r1['DayOfMonth']))
             codes_set(ibufr, 'typicalHour', int(r1['HourOfDay(UTC)']))
             codes_set(ibufr, 'typicalMinute', 0)
-            codes_set(ibufr, 'typicalSecond', 0)    
+            codes_set(ibufr, 'typicalSecond', 0)   
             
             #Assign message template
-            ivalues = (template)                                               #307091 =  surfaceObservationOneHour
-
+            ivalues = (template)                                               #307091 =  surfaceObservationOneHour; 307080 = synopLand; 307090 = synopMobil
+            
             #Assign key name to encode sequence number                             
             codes_set(ibufr, key, ivalues) 
-                  
+            
             #Data Description and Binary Data section
             #Set AWS station info
-            # codes_set(ibufr, 'blockNumber', int(r1[5]))
-            # codes_set(ibufr, 'stationNumber', int(r1[6]))
-            if sname is not None:
-                codes_set(ibufr, 'longStationName', sname) 
-
+            # if sname is not None:
+            # codes_set(ibufr, 'longStationName', './BUFR_out/CEN.bufr') 
+            # codes_set(ibufr, 'stationNumber', 0)
+            # codes_set(ibufr, 'blockNumber', 0)
+            # codes_set(ibufr, 'wigosIdentifierSeries', 0)
+            # codes_set(ibufr, 'wigosIssuerOfIdentifier', 0)
+            # codes_set(ibufr, 'wigosIssueNumber', 0)
+            # codes_set(ibufr, 'wigosLocalIndentifierCharacter', '0000000000000')
+            
             #Set AWS variables
             for i2, r2 in df2.iterrows():
                 
                 #Write value only if lookup table variable name is present
                 if pd.isnull(r2['standard_name']) is False:
+                    
                     #Assign value based on type defined in lookup table
                     if str(r2['type']) in 'int':
                         setBUFRvalue(ibufr, r2['standard_name'], int(r1[r2['CSV_column']]))   
@@ -150,11 +164,12 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
                         setBUFRvalue(ibufr, r2['standard_name'], float(r1[r2['CSV_column']]))                   
                     elif str(r2['type']) in 'str':                   
                         setBUFRvalue(ibufr, r2['standard_name'], str(r1[r2['CSV_column']])) 
-               
+            
+                
             # codes_set(ibufr, '#2#timePeriod', -10)                                           # -10: Period of precipitation observation is 10 minutes
             # codes_set(ibufr, '#1#timeSignificance', 2)                                       # 2: Time averaged
             # codes_set(ibufr, '#3#timePeriod', -10)                                           # -10: Period of wind observations is 10 minutes
-  
+
  
             #Encode keys in data section
             codes_set(ibufr, 'pack', 1)                                            
@@ -175,10 +190,15 @@ def getBUFR(df1, df2, outBUFR, sname=None, ed=4, master=0, vers=31,
 if __name__ == '__main__':
 
     #Get all txt files in directory
-    txtFiles = glob.glob ('./*hour*')
+    txtFiles = glob.glob('AWS_data/*hour*')
     
     #Get lookup table
     lookup = getTXT('./variables_bufr.csv', None)
+ 
+    #Get all txt files in directory
+    outFiles = './BUFR_out/'
+    if os.path.exists(outFiles) is False:
+        os.mkdir(outFiles)
        
     #Iterate through txt files
     for fname in txtFiles:
@@ -189,10 +209,15 @@ if __name__ == '__main__':
     
         #Get text file
         df1 = getTXT(fname)
-        temp = df1['AirTemperature(C)']
-        temp1 = getTempK(temp)
-        # #Construct and export BUFR file
-        # getBUFR(df1, lookup, bufrname, sname=str(bufrname.split('.bufr')[0]))
-        # print(f'Successfully exported bufr file to {bufrname}')   
+        
+        #Get Kelvin temperature        
+        df1['AirTemperature(K)'] = df1.apply(lambda row: getTempK(row), axis=1)
+        
+        #Get Pa pressure
+        df1['AirPressure(Pa)'] = df1.apply(lambda row: getPressPa(row), axis=1)         
+        
+        #Construct and export BUFR file
+        getBUFR(df1, lookup, outFiles+bufrname)
+        print(f'Successfully exported bufr file to {outFiles+bufrname}')   
         
     print('Finished')

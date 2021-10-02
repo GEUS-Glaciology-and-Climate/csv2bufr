@@ -21,7 +21,7 @@ ShortwaveRadiationUp_Cor(W/m2),,,,
 Albedo_theta<70d,,,,
 LongwaveRadiationDown(W/m2),,,J/m2,longWaveRadiationIntegratedOverPeriodSpecified
 LongwaveRadiationUp(W/m2),,,,
-CloudCover,,,%,"cloudCoverTotal, horizontalVisibility, cloudAmount, heightOfBaseOfCloud"
+CloudCover,,cloudCoverTotal,%,"cloudCoverTotal, horizontalVisibility, cloudAmount, heightOfBaseOfCloud"
 SurfaceTemperature(C),,,,
 HeightSensorBoom(m),,,m,heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform
 HeightStakes(m),,,m,totalSnowDepth
@@ -45,3 +45,5 @@ HorDilOfPrecGPS,,,,
 LoggerTemperature(C),,,,
 FanCurrent(mA),,,,
 BatteryVoltage(V),,,,
+AirTemperature(K),float,airTemperature,K,
+AirPressure(Pa),float,pressure,Pa,

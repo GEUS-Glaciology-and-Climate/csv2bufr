@@ -1,0 +1,988 @@
+    {
+      "key" : "edition",
+      "value" : 4
+    },
+    {
+      "key" : "masterTableNumber",
+      "value" : 0
+    },
+    {
+      "key" : "bufrHeaderCentre",
+      "value" : 98
+    },
+    {
+      "key" : "bufrHeaderSubCentre",
+      "value" : 0
+    },
+    {
+      "key" : "updateSequenceNumber",
+      "value" : 0
+    },
+    {
+      "key" : "dataCategory",
+      "value" : 0
+    },
+    {
+      "key" : "internationalDataSubCategory",
+      "value" : 7
+    },
+    {
+      "key" : "dataSubCategory",
+      "value" : 7
+    },
+    {
+      "key" : "masterTablesVersionNumber",
+      "value" : 31
+    },
+    {
+      "key" : "localTablesVersionNumber",
+      "value" : 0
+    },
+    {
+      "key" : "typicalYear",
+      "value" : 2016
+    },
+    {
+      "key" : "typicalMonth",
+      "value" : 8
+    },
+    {
+      "key" : "typicalDay",
+      "value" : 15
+    },
+    {
+      "key" : "typicalHour",
+      "value" : 6
+    },
+    {
+      "key" : "typicalMinute",
+      "value" : 0
+    },
+    {
+      "key" : "typicalSecond",
+      "value" : 0
+    },
+    {
+      "key" : "typicalDate",
+      "value" : "20160815"
+    },
+    {
+      "key" : "typicalTime",
+      "value" : "060000"
+    },
+    {
+      "key" : "numberOfSubsets",
+      "value" : 1
+    },
+    {
+      "key" : "observedData",
+      "value" : 1
+    },
+    {
+      "key" : "compressedData",
+      "value" : 0
+    },
+    {
+      "key" : "unexpandedDescriptors",
+      "value" : 307092
+    },
+    [
+      [
+
+        {
+          "key" : "subsetNumber",
+          "value" : 1
+        },
+        {
+          "key" : "wigosIdentifierSeries",
+          "value" : null,
+          "units" : "Numeric"
+        },
+        [
+
+          {
+            "key" : "wigosIssuerOfIdentifier",
+            "value" : null,
+            "units" : "Numeric"
+          },
+          [
+
+            {
+              "key" : "wigosIssueNumber",
+              "value" : null,
+              "units" : "Numeric"
+            },
+            [
+
+              {
+                "key" : "wigosLocalIdentifierCharacter",
+                "value" : null,
+                "units" : "CCITT IA5"
+              },
+              [
+
+                {
+                  "key" : "blockNumber",
+                  "value" : null,
+                  "units" : "Numeric"
+                },
+                [
+
+                  {
+                    "key" : "stationNumber",
+                    "value" : null,
+                    "units" : "Numeric"
+                  },
+                  [
+
+                    {
+                      "key" : "longStationName",
+                      "value" : "./BUFR_out/CEN.bufr",
+                      "units" : "CCITT IA5"
+                    },
+                                 #307091 =  surfaceObservationOneHour
+                                                                               #307080 = synopLand; 307090 = synopMobil
+            #Assign key name to encode sequence number                             
+            codes_set(ibufr, key, ivalues) [
+
+                      {
+                        "key" : "year",
+                        "value" : 2016,
+                        "units" : "a"
+                      },
+                      [
+
+                        {
+                          "key" : "month",
+                          "value" : 8,
+                          "units" : "mon"
+                        },
+                        [
+
+                          {
+                            "key" : "day",
+                            "value" : 15,
+                            "units" : "d"
+                          },
+                          [
+
+                            {
+                              "key" : "hour",
+                              "value" : 6,
+                              "units" : "h"
+                            },
+                            [
+
+                              {
+                                "key" : "minute",
+                                "value" : null,
+                                "units" : "min"
+                              },
+                              [
+
+                                {
+                                  "key" : "latitude",
+                                  "value" : 75.6246,
+                                  "units" : "deg"
+                                },
+                                [
+
+                                  {
+                                    "key" : "longitude",
+                                    "value" : 35.9749,
+                                    "units" : "deg"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "heightOfStationGroundAboveMeanSeaLevel",
+                                      "value" : 2659.5,
+                                      "units" : "m"
+                                    },
+                                    [
+
+                                      {
+                                        "key" : "observationSequenceNumber",
+                                        "value" : null,
+                                        "units" : "Numeric"
+                                      },
+                                      {
+                                        "key" : "shortDelayedDescriptorReplicationFactor",
+                                        "value" : 1,
+                                        "units" : "Numeric"
+                                      },
+                                      [
+
+                                        {
+                                          "key" : "heightOfBarometerAboveMeanSeaLevel",
+                                          "value" : null,
+                                          "units" : "m"
+                                        },
+                                   # codes_set(ibufr, 'blockNumber', int(r1[5]))
+            # codes_set(ibufr, 'stationNumber', int(r1[6]))                 {
+                                          "key" : "nonCoordinatePressure",
+                                          "value" : null,
+                                          "associatedField" : 
+                                          {
+                                            "key" : "associatedField",
+                                            "value" : 262143,
+                                            "units" : "associated units",
+                                            "associatedFieldSignificance" : 
+                                            {
+                                              "key" : "associatedFieldSignificance",
+                                              "value" : null,
+                                              "units" : "CODE TABLE"
+                                            }
+                                          },
+                                          "units" : "Pa"
+                                        },
+                                        {
+                                          "key" : "pressureReducedToMeanSeaLevel",
+                                          "value" : null,
+                                          "associatedField" : 
+                                          {
+                                            "key" : "associatedField",
+                                            "value" : 262143,
+                                            "units" : "associated units",
+                                            "associatedFieldSignificance" : 
+                                            {
+                                              "key" : "associatedFieldSignificance",
+                                              "value" : null,
+                                              "units" : "CODE TABLE"
+                                            }
+                                          },
+                                          "units" : "Pa"
+                                        },
+                                        [
+
+                                          {
+                                            "key" : "pressure",
+                                            "value" : 72410,
+                                            "associatedField" : 
+                                            {
+                                              "key" : "associatedField",
+                                              "value" : 262143,
+                                              "units" : "associated units",
+                                              "associatedFieldSignificance" : 
+                                              {
+                                                "key" : "associatedFieldSignificance",
+                                                "value" : null,
+                                                "units" : "CODE TABLE"
+                                              }
+                                            },
+                                            "units" : "Pa"
+                                          },
+                                          {
+                                            "key" : "nonCoordinateGeopotentialHeight",
+                                            "value" : null,
+                                            "associatedField" : 
+                                            {
+                                              "key" : "associatedField",
+                                              "value" : 262143,
+                                              "units" : "associated units",
+                                              "associatedFieldSignificance" : 
+                                              {
+                                                "key" : "associatedFieldSignificance",
+                                   # codes_set(ibufr, 'blockNumber', int(r1[5]))
+            # codes_set(ibufr, 'stationNumber', int(r1[6]))                         "value" : null,
+                                                "units" : "CODE TABLE"
+                                              }
+                                            },
+                                            "units" : "gpm"
+                                          },
+                                          {
+                                            "key" : "delayedDescriptorReplicationFactor",
+                                            "value" : 1,
+                                            "units" : "Numeric"
+                                          },
+                                          [
+
+                                            {
+                                              "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                              "value" : null,
+                                              "units" : "m"
+                                            },
+                                            [
+
+                                              {
+                                                "key" : "surfaceQualifierForTemperatureData",
+                                                "value" : null,
+                                                "units" : "CODE TABLE"
+                                              },
+                                              {
+                                                "key" : "airTemperature",
+                                                "value" : 251.38,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "K"
+                                              },
+                                              {
+                                                "key" : "dewpointTemperature",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "K"
+                                              },
+                                              {
+                                                "key" : "relativeHumidity",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "%"
+                                              },
+                                              {
+                                                "key" : "relativeHumidity",
+                                                "value" : 100,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "%"
+                                              }
+                                            ]
+                                          ],
+                                          [
+
+                                            {
+                                              "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                              "value" : null,
+                                              "units" : "m"
+                                            },
+                                            [
+
+                                              {
+                                                "key" : "surfaceQualifierForTemperatureData",
+                                                "value" : null,
+                                                "units" : "CODE TABLE"
+                                              },
+                                              {
+                                                "key" : "delayedDescriptorReplicationFactor",
+                                                "value" : 1,
+                                                "units" : "Numeric"
+                                              },
+                                              [
+
+                                                {
+                                                  "key" : "depthBelowLandSurface",
+                                                  "value" : null,
+                                                  "units" : "m"
+                                                },
+                                                {
+                                                  "key" : "soilTemperature",
+                                                  "value" : null,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "K"
+                                                },
+                                                {
+                                                  "key" : "soilMoisture",
+                                                  "value" : null,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "g/kg"
+                                                }
+                                              ],
+                                              [
+
+                                                {
+                                                  "key" : "depthBelowLandSurface",
+                                                  "value" : null,
+                                                  "units" : "m"
+                                                },
+                                                {
+                                                  "key" : "shortDelayedDescriptorReplicationFactor",
+                                                  "value" : 1,
+                                                  "units" : "Numeric"
+                                                },
+                                                {
+                                                  "key" : "attributeOfFollowingValue",
+                                                  "value" : null,
+                                                  "units" : "CODE TABLE"
+                                                },
+                                                {
+                                                  "key" : "horizontalVisibility",
+                                                  "value" : null,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "m"
+                                                },
+                                                {
+                                                  "key" : "shortDelayedDescriptorReplicationFactor",
+                                                  "value" : 1,
+                                                  "units" : "Numeric"
+                                                },
+                                                {
+                                                  "key" : "cloudCoverTotal",
+                                                  "value" : null,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "%"
+                                                },
+                                                {
+                                                  "key" : "delayedDescriptorReplicationFactor",
+                                                  "value" : 1,
+                                                  "units" : "Numeric"
+                                                },
+                                                [
+
+                                                  {
+                                                    "key" : "verticalSignificanceSurfaceObservations",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  },
+                                                  {
+                                                    "key" : "cloudAmount",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "CODE TABLE"
+                                                  },
+                                                  {
+                                                    "key" : "heightOfBaseOfCloud",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "m"
+                                                  }
+                                                ],
+                                                [
+
+                                                  {
+                                                    "key" : "verticalSignificanceSurfaceObservations",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  },
+                                                  {
+                                                    "key" : "shortDelayedDescriptorReplicationFactor",
+                                                    "value" : 1,
+                                                    "units" : "Numeric"
+                                                  },
+                                                  {
+                                                    "key" : "stateOfGround",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "CODE TABLE"
+                                                  },
+                                                  {
+                                                    "key" : "totalSnowDepth",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "m"
+                                                  },
+                                                  {
+                                                    "key" : "shortDelayedDescriptorReplicationFactor",
+                                                    "value" : 1,
+                                                    "units" : "Numeric"
+                                                  },
+                                                  [
+
+                                                    {
+                                                      "key" : "timePeriod",
+                                                      "value" : null,
+                                                      "units" : "min"
+                                                    },
+                                                    {
+                                                      "key" : "presentWeather",
+                                                      "value" : null,
+                                                      "associatedField" : 
+                                                      {
+                                                        "key" : "associatedField",
+                                                        "value" : 262143,
+                                                        "units" : "associated units",
+                                                        "associatedFieldSignificance" : 
+                                                        {
+                                                          "key" : "associatedFieldSignificance",
+                                                          "value" : null,
+                                                          "units" : "CODE TABLE"
+                                                        }
+                                                      },
+                                                      "units" : "CODE TABLE"
+                                                    },
+                                                    {
+                                                      "key" : "shortDelayedDescriptorReplicationFactor",
+                                                      "value" : 1,
+                                                      "units" : "Numeric"
+                                                    }
+                                                  ],
+                                                  [
+
+                                                    {
+                                                      "key" : "timePeriod",
+                                                      "value" : null,
+                                                      "units" : "min"
+                                                    },
+                                                    {
+                                                      "key" : "totalPrecipitationOrTotalWaterEquivalent",
+                                                      "value" : null,
+                                                      "associatedField" : 
+                                                      {
+                                                        "key" : "associatedField",
+                                                        "value" : 262143,
+                                                        "units" : "associated units",
+                                                        "associatedFieldSignificance" : 
+                                                        {
+                                                          "key" : "associatedFieldSignificance",
+                                                          "value" : null,
+                                                          "units" : "CODE TABLE"
+                                                        }
+                                                      },
+                                                      "units" : "kg m-2"
+                                                    },
+                                                    {
+                                                      "key" : "delayedDescriptorReplicationFactor",
+                                                      "value" : 1,
+                                                      "units" : "Numeric"
+                                                    }
+                                                  ]
+                                                ]
+                                              ]
+                                            ]
+                                          ],
+                                          [
+
+                                            {
+                                              "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                              "value" : null,
+                                              "units" : "m"
+                                            },
+                                            [
+
+                                              {
+                                                "key" : "timeSignificance",
+                                                "value" : null,
+                                                "units" : "CODE TABLE"
+                                              },
+                                              [
+
+                                                {
+                                                  "key" : "timePeriod",
+                                                  "value" : null,
+                                                  "units" : "min"
+                                                },
+                                                {
+                                                  "key" : "windDirection",
+                                                  "value" : 270,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "deg"
+                                                },
+                                                {
+                                                  "key" : "windSpeed",
+                                                  "value" : 2.5,
+                                                  "associatedField" : 
+                                                  {
+                                                    "key" : "associatedField",
+                                                    "value" : 262143,
+                                                    "units" : "associated units",
+                                                    "associatedFieldSignificance" : 
+                                                    {
+                                                      "key" : "associatedFieldSignificance",
+                                                      "value" : null,
+                                                      "units" : "CODE TABLE"
+                                                    }
+                                                  },
+                                                  "units" : "m/s"
+                                                }
+                                              ]
+                                            ],
+                                            [
+
+                                              {
+                                                "key" : "timeSignificance",
+                                                "value" : null,
+                                                "units" : "CODE TABLE"
+                                              },
+                                              {
+                                                "key" : "maximumWindGustDirection",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "deg"
+                                              },
+                                              {
+                                                "key" : "maximumWindGustSpeed",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "m/s"
+                                              }
+                                            ]
+                                          ],
+                                          [
+
+                                            {
+                                              "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                              "value" : null,
+                                              "units" : "m"
+                                            },
+                                            {
+                                              "key" : "shortDelayedDescriptorReplicationFactor",
+                                              "value" : 1,
+                                              "units" : "Numeric"
+                                            },
+                                            [
+
+                                              {
+                                                "key" : "timePeriod",
+                                                "value" : null,
+                                                "units" : "min"
+                                              },
+                                              {
+                                                "key" : "totalSunshine",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "min"
+                                              },
+                                              {
+                                                "key" : "shortDelayedDescriptorReplicationFactor",
+                                                "value" : 1,
+                                                "units" : "Numeric"
+                                              }
+                                            ],
+                                            [
+
+                                              {
+                                                "key" : "timePeriod",
+                                                "value" : null,
+                                                "units" : "min"
+                                              },
+                                              {
+                                                "key" : "longWaveRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "longWaveRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "shortWaveRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "globalSolarRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "diffuseSolarRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "directSolarRadiationIntegratedOverPeriodSpecified",
+                                                "value" : null,
+                                                "associatedField" : 
+                                                {
+                                                  "key" : "associatedField",
+                                                  "value" : 262143,
+                                                  "units" : "associated units",
+                                                  "associatedFieldSignificance" : 
+                                                  {
+                                                    "key" : "associatedFieldSignificance",
+                                                    "value" : null,
+                                                    "units" : "CODE TABLE"
+                                                  }
+                                                },
+                                                "units" : "J m-2"
+                                              },
+                                              {
+                                                "key" : "shortDelayedDescriptorReplicationFactor",
+                                                "value" : 1,
+                                                "units" : "Numeric"
+                                              }
+                                            ],
+                                            [
+
+                                              {
+                                                "key" : "timePeriod",
+                                                "value" : null,
+                                                "units" : "min"
+                                              },
+                                              [
+
+                                                {
+                                                  "key" : "spectrographicWavelength",
+                                                  "value" : null,
+                                                  "units" : "m"
+                                                },
+                                                [
+
+                                                  {
+                                                    "key" : "spectrographicWidth",
+                                                    "value" : null,
+                                                    "units" : "m"
+                                                  },
+                                                  {
+                                                    "key" : "globalUvIrradiation",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "J m-2"
+                                                  }
+                                                ]
+                                              ],
+                                              [
+
+                                                {
+                                                  "key" : "spectrographicWavelength",
+                                                  "value" : null,
+                                                  "units" : "m"
+                                                },
+                                                [
+
+                                                  {
+                                                    "key" : "spectrographicWidth",
+                                                    "value" : null,
+                                                    "units" : "m"
+                                                  },
+                                                  {
+                                                    "key" : "globalUvIrradiation",
+                                                    "value" : null,
+                                                    "associatedField" : 
+                                                    {
+                                                      "key" : "associatedField",
+                                                      "value" : 262143,
+                                                      "units" : "associated units",
+                                                      "associatedFieldSignificance" : 
+                                                      {
+                                                        "key" : "associatedFieldSignificance",
+                                                        "value" : null,
+                                                        "units" : "CODE TABLE"
+                                                      }
+                                                    },
+                                                    "units" : "J m-2"
+

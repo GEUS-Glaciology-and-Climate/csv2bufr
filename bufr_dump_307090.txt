@@ -1,0 +1,837 @@
+  [
+
+    {
+      "key" : "edition",
+      "value" : 4
+    },
+    {
+      "key" : "masterTableNumber",
+      "value" : 0
+    },
+    {
+      "key" : "bufrHeaderCentre",
+      "value" : 98
+    },
+    {
+      "key" : "bufrHeaderSubCentre",
+      "value" : 0
+    },
+    {
+      "key" : "updateSequenceNumber",
+      "value" : 0
+    },
+    {
+      "key" : "dataCategory",
+      "value" : 0
+    },
+    {
+      "key" : "internationalDataSubCategory",
+      "value" : 7
+    },
+    {
+      "key" : "dataSubCategory",
+      "value" : 7
+    },
+    {
+      "key" : "masterTablesVersionNumber",
+      "value" : 31
+    },
+    {
+      "key" : "localTablesVersionNumber",
+      "value" : 0
+    },
+    {
+      "key" : "typicalYear",
+      "value" : 2016
+    },
+    {
+      "key" : "typicalMonth",
+      "value" : 6
+    },
+    {
+      "key" : "typicalDay",
+      "value" : 19
+    },
+    {
+      "key" : "typicalHour",
+      "value" : 19
+    },
+    {
+      "key" : "typicalMinute",
+      "value" : 0
+    },
+    {
+      "key" : "typicalSecond",
+      "value" : 0
+    },
+    {
+      "key" : "typicalDate",
+      "value" : "20160619"
+    },
+    {
+      "key" : "typicalTime",
+      "value" : "190000"
+    },
+    {
+      "key" : "numberOfSubsets",
+      "value" : 1
+    },
+    {
+      "key" : "observedData",
+      "value" : 1
+    },
+    {
+      "key" : "compressedData",
+      "value" : 0
+    },
+    {
+      "key" : "unexpandedDescriptors",
+      "value" : 307090
+    },
+    [
+      [
+
+        {
+          "key" : "subsetNumber",
+          "value" : 1
+        },
+        {
+          "key" : "shipOrMobileLandStationIdentifier",
+          "value" : null,
+          "units" : "CCITT IA5"
+        },
+        [
+
+          {
+            "key" : "regionNumber",
+            "value" : null,
+            "units" : "CODE TABLE"
+          },
+          [
+
+            {
+              "key" : "stationType",
+              "value" : null,
+              "units" : "CODE TABLE"
+            },
+            [
+
+              {
+                "key" : "year",
+                "value" : 2016,
+                "units" : "a"
+              },
+              [
+
+                {
+                  "key" : "month",
+                  "value" : 6,
+                  "units" : "mon"
+                },
+                [
+
+                  {
+                    "key" : "day",
+                    "value" : 19,
+                    "units" : "d"
+                  },
+                  [
+
+                    {
+                      "key" : "hour",
+                      "value" : 19,
+                      "units" : "h"
+                    },
+                    [
+
+                      {
+                        "key" : "minute",
+                        "value" : null,
+                        "units" : "min"
+                      },
+                      [
+
+                        {
+                          "key" : "latitude",
+                          "value" : 75.6245,
+                          "units" : "deg"
+                        },
+                        [
+
+                          {
+                            "key" : "longitude",
+                            "value" : 35.975,
+                            "units" : "deg"
+                          },
+                          [
+
+                            {
+                              "key" : "heightOfStationGroundAboveMeanSeaLevel",
+                              "value" : 2658.9,
+                              "units" : "m"
+                            },
+                            [
+
+                              {
+                                "key" : "heightOfBarometerAboveMeanSeaLevel",
+                                "value" : null,
+                                "units" : "m"
+                              },
+                              {
+                                "key" : "stationElevationQualityMarkForMobileStations",
+                                "value" : null,
+                                "units" : "CODE TABLE"
+                              },
+                              {
+                                "key" : "nonCoordinatePressure",
+                                "value" : null,
+                                "units" : "Pa"
+                              },
+                              {
+                                "key" : "pressureReducedToMeanSeaLevel",
+                                "value" : null,
+                                "units" : "Pa"
+                              },
+                              {
+                                "key" : "3HourPressureChange",
+                                "value" : null,
+                                "units" : "Pa"
+                              },
+                              {
+                                "key" : "characteristicOfPressureTendency",
+                                "value" : null,
+                                "units" : "CODE TABLE"
+                              },
+                              {
+                                "key" : "24HourPressureChange",
+                                "value" : null,
+                                "units" : "Pa"
+                              },
+                              [
+
+                                {
+                                  "key" : "pressure",
+                                  "value" : 72240,
+                                  "units" : "Pa"
+                                },
+                                {
+                                  "key" : "nonCoordinateGeopotentialHeight",
+                                  "value" : null,
+                                  "units" : "gpm"
+                                },
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  {
+                                    "key" : "airTemperature",
+                                    "value" : 267.62,
+                                    "units" : "K"
+                                  },
+                                  {
+                                    "key" : "dewpointTemperature",
+                                    "value" : null,
+                                    "units" : "K"
+                                  },
+                                  {
+                                    "key" : "relativeHumidity",
+                                    "value" : 88,
+                                    "units" : "%"
+                                  }
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  {
+                                    "key" : "horizontalVisibility",
+                                    "value" : null,
+                                    "units" : "m"
+                                  }
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  {
+                                    "key" : "totalPrecipitationPast24Hours",
+                                    "value" : null,
+                                    "units" : "kg m-2"
+                                  }
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  {
+                                    "key" : "cloudCoverTotal",
+                                    "value" : null,
+                                    "units" : "%"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudAmount",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "heightOfBaseOfCloud",
+                                      "value" : null,
+                                      "units" : "m"
+                                    },
+                                    {
+                                      "key" : "cloudType",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudType",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudType",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "delayedDescriptorReplicationFactor",
+                                      "value" : 1,
+                                      "units" : "Numeric"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudAmount",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudType",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "heightOfBaseOfCloud",
+                                      "value" : null,
+                                      "units" : "m"
+                                    },
+                                    {
+                                      "key" : "delayedDescriptorReplicationFactor",
+                                      "value" : 1,
+                                      "units" : "Numeric"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudAmount",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "cloudType",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "heightOfTopOfCloud",
+                                      "value" : null,
+                                      "units" : "m"
+                                    },
+                                    {
+                                      "key" : "cloudTopDescription",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "trueDirectionFromWhichAPhenomenonOrCloudsAreMovingOrInWhichTheyAreObserved",
+                                      "value" : null,
+                                      "units" : "deg"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "trueDirectionFromWhichAPhenomenonOrCloudsAreMovingOrInWhichTheyAreObserved",
+                                      "value" : null,
+                                      "units" : "deg"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    {
+                                      "key" : "trueDirectionFromWhichAPhenomenonOrCloudsAreMovingOrInWhichTheyAreObserved",
+                                      "value" : null,
+                                      "units" : "deg"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "verticalSignificanceSurfaceObservations",
+                                      "value" : null,
+                                      "units" : "CODE TABLE"
+                                    },
+                                    [
+
+                                      {
+                                        "key" : "bearingOrAzimuth",
+                                        "value" : null,
+                                        "units" : "deg"
+                                      },
+                                      [
+
+                                        {
+                                          "key" : "elevation",
+                                          "value" : null,
+                                          "units" : "deg"
+                                        },
+                                        {
+                                          "key" : "cloudType",
+                                          "value" : null,
+                                          "units" : "CODE TABLE"
+                                        }
+                                      ]
+                                    ],
+                                    [
+
+                                      {
+                                        "key" : "bearingOrAzimuth",
+                                        "value" : null,
+                                        "units" : "deg"
+                                      },
+                                      [
+
+                                        {
+                                          "key" : "elevation",
+                                          "value" : null,
+                                          "units" : "deg"
+                                        },
+                                        {
+                                          "key" : "stateOfGround",
+                                          "value" : null,
+                                          "units" : "CODE TABLE"
+                                        },
+                                        {
+                                          "key" : "totalSnowDepth",
+                                          "value" : null,
+                                          "units" : "m"
+                                        },
+                                        {
+                                          "key" : "groundMinimumTemperaturePast12Hours",
+                                          "value" : null,
+                                          "units" : "K"
+                                        },
+                                        {
+                                          "key" : "presentWeather",
+                                          "value" : null,
+                                          "units" : "CODE TABLE"
+                                        },
+                                        [
+
+                                          {
+                                            "key" : "timePeriod",
+                                            "value" : null,
+                                            "units" : "h"
+                                          },
+                                          {
+                                            "key" : "pastWeather1",
+                                            "value" : null,
+                                            "units" : "CODE TABLE"
+                                          },
+                                          {
+                                            "key" : "pastWeather2",
+                                            "value" : null,
+                                            "units" : "CODE TABLE"
+                                          }
+                                        ],
+                                        [
+
+                                          {
+                                            "key" : "timePeriod",
+                                            "value" : null,
+                                            "units" : "h"
+                                          },
+                                          {
+                                            "key" : "totalSunshine",
+                                            "value" : null,
+                                            "units" : "min"
+                                          }
+                                        ],
+                                        [
+
+                                          {
+                                            "key" : "timePeriod",
+                                            "value" : null,
+                                            "units" : "h"
+                                          },
+                                          {
+                                            "key" : "totalSunshine",
+                                            "value" : null,
+                                            "units" : "min"
+                                          }
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "totalPrecipitationOrTotalWaterEquivalent",
+                                      "value" : null,
+                                      "units" : "kg m-2"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "totalPrecipitationOrTotalWaterEquivalent",
+                                      "value" : null,
+                                      "units" : "kg m-2"
+                                    }
+                                  ]
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "maximumTemperatureAtHeightAndOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "K"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "minimumTemperatureAtHeightAndOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "K"
+                                    }
+                                  ]
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "instrumentationForWindMeasurement",
+                                      "value" : null,
+                                      "units" : "FLAG TABLE"
+                                    },
+                                    [
+
+                                      {
+                                        "key" : "timeSignificance",
+                                        "value" : null,
+                                        "units" : "CODE TABLE"
+                                      },
+                                      [
+
+                                        {
+                                          "key" : "timePeriod",
+                                          "value" : null,
+                                          "units" : "min"
+                                        },
+                                        {
+                                          "key" : "windDirection",
+                                          "value" : 190,
+                                          "units" : "deg"
+                                        },
+                                        {
+                                          "key" : "windSpeed",
+                                          "value" : 4.9,
+                                          "units" : "m/s"
+                                        }
+                                      ]
+                                    ],
+                                    [
+
+                                      {
+                                        "key" : "timeSignificance",
+                                        "value" : null,
+                                        "units" : "CODE TABLE"
+                                      },
+                                      [
+
+                                        {
+                                          "key" : "timePeriod",
+                                          "value" : null,
+                                          "units" : "min"
+                                        },
+                                        {
+                                          "key" : "maximumWindGustDirection",
+                                          "value" : null,
+                                          "units" : "deg"
+                                        },
+                                        {
+                                          "key" : "maximumWindGustSpeed",
+                                          "value" : null,
+                                          "units" : "m/s"
+                                        }
+                                      ],
+                                      [
+
+                                        {
+                                          "key" : "timePeriod",
+                                          "value" : null,
+                                          "units" : "min"
+                                        },
+                                        {
+                                          "key" : "maximumWindGustDirection",
+                                          "value" : null,
+                                          "units" : "deg"
+                                        },
+                                        {
+                                          "key" : "maximumWindGustSpeed",
+                                          "value" : null,
+                                          "units" : "m/s"
+                                        }
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+
+                                  {
+                                    "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
+                                    "value" : null,
+                                    "units" : "m"
+                                  },
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    [
+
+                                      {
+                                        "key" : "typeOfInstrumentationForEvaporationMeasurement",
+                                        "value" : null,
+                                        "units" : "CODE TABLE"
+                                      },
+                                      {
+                                        "key" : "evaporation",
+                                        "value" : null,
+                                        "units" : "kg m-2"
+                                      }
+                                    ]
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "longWaveRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "shortWaveRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "netRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "globalSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "diffuseSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "directSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "longWaveRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "shortWaveRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "netRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "globalSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "diffuseSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    },
+                                    {
+                                      "key" : "directSolarRadiationIntegratedOverPeriodSpecified",
+                                      "value" : null,
+                                      "units" : "J m-2"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    }
+                                  ],
+                                  [
+
+                                    {
+                                      "key" : "timePeriod",
+                                      "value" : null,
+                                      "units" : "h"
+                                    },
+                                    {
+                                      "key" : "temperatureChangeOverSpecifiedPeriod",
+                                      "value" : null,
+                                      "units" : "K"
+                                    }
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+]
+
