@@ -1,6 +1,4 @@
- [
-
-    {
+  {
       "key" : "edition",
       "value" : 4
     },
@@ -34,7 +32,7 @@
     },
     {
       "key" : "masterTablesVersionNumber",
-      "value" : 31
+      "value" : 13
     },
     {
       "key" : "localTablesVersionNumber",
@@ -42,7 +40,7 @@
     },
     {
       "key" : "typicalYear",
-      "value" : 2018
+      "value" : 2016
     },
     {
       "key" : "typicalMonth",
@@ -50,11 +48,11 @@
     },
     {
       "key" : "typicalDay",
-      "value" : 11
+      "value" : 7
     },
     {
       "key" : "typicalHour",
-      "value" : 7
+      "value" : 6
     },
     {
       "key" : "typicalMinute",
@@ -66,11 +64,11 @@
     },
     {
       "key" : "typicalDate",
-      "value" : "20180911"
+      "value" : "20160907"
     },
     {
       "key" : "typicalTime",
-      "value" : "070000"
+      "value" : "060000"
     },
     {
       "key" : "numberOfSubsets",
@@ -97,14 +95,14 @@
         },
         {
           "key" : "blockNumber",
-          "value" : null,
+          "value" : 1,
           "units" : "Numeric"
         },
         [
 
           {
             "key" : "stationNumber",
-            "value" : null,
+            "value" : 1,
             "units" : "Numeric"
           },
           [
@@ -118,14 +116,14 @@
 
               {
                 "key" : "stationType",
-                "value" : null,
+                "value" : 0,
                 "units" : "CODE TABLE"
               },
               [
 
                 {
                   "key" : "year",
-                  "value" : 2018,
+                  "value" : 2016,
                   "units" : "a"
                 },
                 [
@@ -139,14 +137,14 @@
 
                     {
                       "key" : "day",
-                      "value" : 11,
+                      "value" : 7,
                       "units" : "d"
                     },
                     [
 
                       {
                         "key" : "hour",
-                        "value" : 7,
+                        "value" : 6,
                         "units" : "h"
                       },
                       [
@@ -160,21 +158,21 @@
 
                           {
                             "key" : "latitude",
-                            "value" : 75.6252,
+                            "value" : 75.6247,
                             "units" : "deg"
                           },
                           [
 
                             {
                               "key" : "longitude",
-                              "value" : 35.9735,
+                              "value" : 35.9748,
                               "units" : "deg"
                             },
                             [
 
                               {
                                 "key" : "heightOfStationGroundAboveMeanSeaLevel",
-                                "value" : 2660.1,
+                                "value" : 2658.5,
                                 "units" : "m"
                               },
                               [
@@ -213,7 +211,7 @@
 
                                   {
                                     "key" : "pressure",
-                                    "value" : 72310,
+                                    "value" : 71680,
                                     "units" : "Pa"
                                   },
                                   {
@@ -230,7 +228,7 @@
                                     },
                                     {
                                       "key" : "airTemperature",
-                                      "value" : 259.31,
+                                      "value" : 240.31,
                                       "units" : "K"
                                     },
                                     {
@@ -248,7 +246,7 @@
 
                                     {
                                       "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
-                                      "value" : 2.35,
+                                      "value" : 2.32,
                                       "units" : "m"
                                     },
                                     {
@@ -620,7 +618,7 @@
 
                                       {
                                         "key" : "instrumentationForWindMeasurement",
-                                        "value" : null,
+                                        "value" : 0,
                                         "units" : "FLAG TABLE"
                                       },
                                       [
@@ -639,12 +637,12 @@
                                           },
                                           {
                                             "key" : "windDirection",
-                                            "value" : 223,
+                                            "value" : 246,
                                             "units" : "deg"
                                           },
                                           {
                                             "key" : "windSpeed",
-                                            "value" : 1.4,
+                                            "value" : 4.5,
                                             "units" : "m/s"
                                           }
                                         ]
@@ -699,7 +697,7 @@
 
                                     {
                                       "key" : "heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform",
-                                      "value" : 2.85,
+                                      "value" : 2.82,
                                       "units" : "m"
                                     },
                                     [

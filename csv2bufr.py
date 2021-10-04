@@ -20,7 +20,10 @@ https://gist.github.com/MHBalsmeier/a01ad4e07ecf467c90fad2ac7719844a
 
 Processing steps based on this example:
 https://confluence.ecmwf.int/display/UDOC/How+do+I+create+BUFR+from+a+CSV+-+ecCodes+BUFR+FAQ
-    
+   
+
+According to DMI, the BUFR messages should adhere to Common Code Table 13:
+https://confluence.ecmwf.int/display/ECC/WMO%3D13+element+table#WMO=13elementtable-CL_1
 """
 import pandas as pd
 import glob, os
@@ -83,7 +86,7 @@ def getPressPa(row, nullvalue=-999):
 
     
 
-def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, 
+def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=13, 
             template=307080, key='unexpandedDescriptors'):
     '''Construct and export .bufr messages to file from DataFrame.
     
@@ -94,7 +97,7 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
     ed (int)                BUFR table edition (default=4)
     master (int)            Master table number (default=0, standard WMO FM 94
                             BUFR tables)
-    vers (int)              Master table version number (default=31)
+    vers (int)              Master table version number (default=13)
     template (int)          Template table number (default=307080)
     key (str)               Encoding key name (default="unexpandedDescriptors")
     
@@ -143,7 +146,6 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
             codes_set(ibufr, 'typicalSecond', 0)   
             
             #Assign message template
-            #307091 =  surfaceObservationOneHour; 307080 = synopLand; 307090 = synopMobil
             ivalues = (template)
             
             #Assign key name to encode sequence number                             
@@ -151,14 +153,31 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
             
             #Data Description and Binary Data section
             #Set AWS station info
-            # if sname is not None:
-            # codes_set(ibufr, 'longStationName', './BUFR_out/CEN.bufr') 
-            # codes_set(ibufr, 'stationNumber', 0)
-            # codes_set(ibufr, 'blockNumber', 0)
-            # codes_set(ibufr, 'wigosIdentifierSeries', 0)
-            # codes_set(ibufr, 'wigosIssuerOfIdentifier', 0)
-            # codes_set(ibufr, 'wigosIssueNumber', 0)
-            # codes_set(ibufr, 'wigosLocalIndentifierCharacter', '0000000000000')
+            
+            #Need to set WMO block and station number
+            codes_set(ibufr, 'stationNumber', 1)
+            codes_set(ibufr, 'blockNumber', 1)
+            # codes_set(ibufr, 'wmoRegionSubArea', 1)
+            
+            # #Region number=7 (unknown)
+            # codes_set(ibufr, 'regionNumber', 7)
+            
+            #Unset parameters
+            # codes_set(ibufr, 'stationOrSiteName', CCITT IA5)
+            # codes_set(ibufr, 'shortStationName', CCITT IA5)
+            # codes_set(ibufr, 'shipOrMobileLandStationIdentifier', CCITT IA5)
+            # codes_set(ibufr, 'directionOfMotionOfMovingObservingPlatform', deg)
+            # codes_set(ibufr, 'movingObservingPlatformSpeed', m/s)
+            
+            codes_set(ibufr, 'stationType', 0)
+            codes_set(ibufr, 'instrumentationForWindMeasurement', 0)
+            # codes_set(ibufr, 'measuringEquipmentType', 0)
+            # codes_set(ibufr, 'temperatureObservationPrecision', 0.1)
+            # codes_set(ibufr, 'solarAndInfraredRadiationCorrection', 0)
+            # codes_set(ibufr, 'pressureSensorType', 30)
+            # codes_set(ibufr, 'temperatureSensorType', 30) 
+            # codes_set(ibufr, 'humiditySensorType', 30) 
+            
             
             #Set AWS variables
             for i2, r2 in df2.iterrows():
@@ -196,7 +215,9 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
                 codes_set(ibufr, 
                           '#8#heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform', 
                           r1['HeightSensorBoom(m)']+0.4)
-
+                if r1['ElevationGPS(m)'] != -999:
+                    codes_set(ibufr, 'heightOfBarometerAboveMeanSeaLevel', 
+                              r1['ElevationGPS(m)']+r1['HeightSensorBoom(m)'])
  
             #Encode keys in data section
             codes_set(ibufr, 'pack', 1)                                            
@@ -228,7 +249,7 @@ if __name__ == '__main__':
         os.mkdir(outFiles)
        
     # #Iterate through txt files
-    for fname in txtFiles[0:1]:
+    for fname in txtFiles:
     
         #Generate output BUFR filename
         bufrname = fname.split('/')[-1].split('.txt')[0][:-4][:-5]+'.bufr'
