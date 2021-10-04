@@ -14,16 +14,16 @@ WindSpeed(m/s),float,windSpeed,m/s,maximumWindGustSpeed
 WindDirection(d),float,windDirection,deg,maximumWindGustDirection
 SensibleHeatFlux(W/m2),,,,
 LatentHeatFlux(W/m2),,,,
-ShortwaveRadiationDown(W/m2),,,J/m2,shortWaveRadiationIntegratedOverPeriodSpecified
-ShortwaveRadiationDown_Cor(W/m2),,,,
+ShortwaveRadiationDown(W/m2),,,,
+ShortwaveRadiationDown_Cor(W/m2),float,#1#shortWaveRadiationIntegratedOverPeriodSpecified,J/m2,
 ShortwaveRadiationUp(W/m2),,,,
-ShortwaveRadiationUp_Cor(W/m2),,,,
+ShortwaveRadiationUp_Cor(W/m2),float,#2#shortWaveRadiationIntegratedOverPeriodSpecified,J/m2,
 Albedo_theta<70d,,,,
-LongwaveRadiationDown(W/m2),,,J/m2,longWaveRadiationIntegratedOverPeriodSpecified
-LongwaveRadiationUp(W/m2),,,,
+LongwaveRadiationDown(W/m2),float,#1#longWaveRadiationIntegratedOverPeriodSpecified,J/m2,
+LongwaveRadiationUp(W/m2),float,#2#longWaveRadiationIntegratedOverPeriodSpecified,J/m2,
 CloudCover,,cloudCoverTotal,%,"cloudCoverTotal, horizontalVisibility, cloudAmount, heightOfBaseOfCloud"
 SurfaceTemperature(C),,,,
-HeightSensorBoom(m),,,m,heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform
+HeightSensorBoom(m),float,heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform,m,
 HeightStakes(m),,,m,totalSnowDepth
 DepthPressureTransducer(m),,,,
 DepthPressureTransducer_Cor(m),,,,

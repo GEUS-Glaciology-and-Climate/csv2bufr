@@ -80,10 +80,11 @@ def getPressPa(row, nullvalue=-999):
         return nullvalue
     else:
         return row['AirPressure(hPa)']*100
+
     
 
 def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31, 
-            template=307090, key='unexpandedDescriptors'):
+            template=307080, key='unexpandedDescriptors'):
     '''Construct and export .bufr messages to file from DataFrame.
     
     Variables
@@ -91,9 +92,10 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
     df2 (DataFrame)         Pandas dataframe of lookup table
     outBUFR (str)           File path that .bufr file will be exported to
     ed (int)                BUFR table edition (default=4)
-    master (int)            Master table number (default=0)
+    master (int)            Master table number (default=0, standard WMO FM 94
+                            BUFR tables)
     vers (int)              Master table version number (default=31)
-    template (int)          Template table number (default=307092)
+    template (int)          Template table number (default=307080)
     key (str)               Encoding key name (default="unexpandedDescriptors")
     
     Returns 
@@ -110,20 +112,26 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
         ibufr = codes_bufr_new_from_samples('BUFR4')  
         
         try:
-            #Indicator section (BUFR 4 letters, total msg size, edition number)                             
-            codes_set(ibufr, 'edition', ed)                                    #Currently edition 4 
+            #Indicator section (BUFR 4 letters, total msg size, edition number)
+            #Current edition is version 4                             
+            codes_set(ibufr, 'edition', ed)                                    
            
             #Identification section (master table, id, sequence number, data cat number)
-            codes_set(ibufr, 'masterTableNumber', master)                      #0 = standard WMO FM 94 BUFR tables
-            codes_set(ibufr, 'masterTablesVersionNumber', vers)                #Table version
+            codes_set(ibufr, 'masterTableNumber', master)                      
+            codes_set(ibufr, 'masterTablesVersionNumber', vers)                
             codes_set(ibufr, 'localTablesVersionNumber', 0)
-    
-            codes_set(ibufr, 'bufrHeaderCentre', 98)                           #98 = centre is ecmf
+            
+            #BUFR header centre 98 = ECMF
+            codes_set(ibufr, 'bufrHeaderCentre', 98)                           
             codes_set(ibufr, 'bufrHeaderSubCentre', 0)
             codes_set(ibufr, 'updateSequenceNumber', 0)
-            codes_set(ibufr, 'dataCategory', 0)                                #0 = Surface data, land
-            codes_set(ibufr, 'internationalDataSubCategory', 7)                #7 = n-min obs from AWS stations
-            codes_set(ibufr, 'dataSubCategory', 7)                             #3-5=mobile; 0-2=fixed
+            
+            #Data category 0 = surface data, land
+            codes_set(ibufr, 'dataCategory', 0)    
+
+            #International data subcategory 7 = n-min obs from AWS stations                
+            codes_set(ibufr, 'internationalDataSubCategory', 7)                
+            codes_set(ibufr, 'dataSubCategory', 7)                             
     
             codes_set(ibufr, 'observedData', 1)
             codes_set(ibufr, 'compressedData', 0)
@@ -135,7 +143,8 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
             codes_set(ibufr, 'typicalSecond', 0)   
             
             #Assign message template
-            ivalues = (template)                                               #307091 =  surfaceObservationOneHour; 307080 = synopLand; 307090 = synopMobil
+            #307091 =  surfaceObservationOneHour; 307080 = synopLand; 307090 = synopMobil
+            ivalues = (template)
             
             #Assign key name to encode sequence number                             
             codes_set(ibufr, key, ivalues) 
@@ -164,11 +173,29 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
                         setBUFRvalue(ibufr, r2['standard_name'], float(r1[r2['CSV_column']]))                   
                     elif str(r2['type']) in 'str':                   
                         setBUFRvalue(ibufr, r2['standard_name'], str(r1[r2['CSV_column']])) 
-            
                 
-            # codes_set(ibufr, '#2#timePeriod', -10)                                           # -10: Period of precipitation observation is 10 minutes
-            # codes_set(ibufr, '#1#timeSignificance', 2)                                       # 2: Time averaged
-            # codes_set(ibufr, '#3#timePeriod', -10)                                           # -10: Period of wind observations is 10 minutes
+                
+            #Set monitoring time period (-10=10 minutes)
+            if r1['WindSpeed(m/s)'] != -999:
+                codes_set(ibufr, '#11#timePeriod', -10)
+            if r1['ShortwaveRadiationDown_Cor(W/m2)'] != -999:
+                codes_set(ibufr, '#14#timePeriod', -10)
+            if r1['LongwaveRadiationDown(W/m2)'] != -999:
+                codes_set(ibufr, '#15#timePeriod', -10)
+            
+            #Time significance 2 = time averaged
+            codes_set(ibufr, '#1#timeSignificance', 2)
+            if r1['WindSpeed(m/s)'] != -999:
+                codes_set(ibufr, '#2#timeSignificance', 2)
+
+            #Set measurement heights
+            if r1['HeightSensorBoom(m)'] != -999:
+                codes_set(ibufr, 
+                          '#2#heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform', 
+                          r1['HeightSensorBoom(m)']-0.1)
+                codes_set(ibufr, 
+                          '#8#heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform', 
+                          r1['HeightSensorBoom(m)']+0.4)
 
  
             #Encode keys in data section
@@ -183,7 +210,7 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=31,
         codes_release(ibufr)            
         
     fout.close()
-   
+ 
 
 #------------------------------------------------------------------------------
 
@@ -200,8 +227,8 @@ if __name__ == '__main__':
     if os.path.exists(outFiles) is False:
         os.mkdir(outFiles)
        
-    #Iterate through txt files
-    for fname in txtFiles:
+    # #Iterate through txt files
+    for fname in txtFiles[0:1]:
     
         #Generate output BUFR filename
         bufrname = fname.split('/')[-1].split('.txt')[0][:-4][:-5]+'.bufr'
@@ -219,5 +246,6 @@ if __name__ == '__main__':
         #Construct and export BUFR file
         getBUFR(df1, lookup, outFiles+bufrname)
         print(f'Successfully exported bufr file to {outFiles+bufrname}')   
+        
         
     print('Finished')
