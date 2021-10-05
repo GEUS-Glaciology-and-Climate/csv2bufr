@@ -22,12 +22,12 @@ This is current the playground script for converting .txt/.csv files to WMO-comp
 The script is based on one of the useful tutorials from the eccodes website [[https://confluence.ecmwf.int/display/UDOC/How+do+I+create+BUFR+from+a+CSV+-+ecCodes+BUFR+FAQ][here]].
 
 ** variables_bufr.csv lookup table
-The lookup table is used to map variables from the PROMICE/GC-Net station to complaint BUFR message variables. If a name is not given in the standard_names column then the script will not write the variable to the BUFR message. Currently there are some issues with -9999 values, so some variables have not been flagged for writing yet. 
+The lookup table is used to map variables from the PROMICE/GC-Net station to complaint BUFR message variables. If a name is not given in the standard_names column then the script will not write the variable to the BUFR message. Currently, -999 values are disregarded from the ingestion but there is room for some additional checks (e.g. data jumps) and corrections. 
 
 ** Notes on the BUFR format
 One BUFR message is written per observation (i.e. one row). A BUFR file can hold many (many) messages.
 
-Different template descriptors can be used within the standard WMO BUFR format, based on the type and setting of the observation station. A list of all templates is available [[https://confluence.ecmwf.int/display/ECC/BUFR+templates][here]]. My best guess at the moment is that the PROMICE/GC-Net stations fit with the surfaceObservationOneHour [[https://wmoomm.sharepoint.com/:w:/s/wmocpdb/ESfVFQ9_YKtLpOwuKVdoeAwBF3P2C7H4yyFj-6NDezcKog?rtime=Nx3AiY922Ug][template]] (id 307091/307092). However, this should be discussed with someone more knowledgeable before moving forward. There are many variables associated with this template - I have done my best to match what I can, but some variable descriptions are ambiguous. This probably needs checking.
+Different template descriptors can be used within the standard WMO BUFR format, based on the type and setting of the observation station. A list of all templates is available [[https://confluence.ecmwf.int/display/ECC/BUFR+templates][here]]. Based on advice so far, the AWS stations fit the synopLAnd template (id 307090), although it may be that they are classed as synopMobile (id 307080) as they are on moving ice (albeit the term mobile often refers to faster moving platforms). This should be discussed with someone more knowledgeable before moving forward. There are many variables associated with this template - I have done my best to match what I can, but some variable descriptions are ambiguous. This probably needs checking.
 
 To check the output BUFR file, I plan on writing a checking function, but for now you can dump the contents of a BUFR file using the eccodes operation 'bufr_ls' (for a summary) or 'bufr_dump' (for the full contents):
 #+BEGIN_SRC bash
