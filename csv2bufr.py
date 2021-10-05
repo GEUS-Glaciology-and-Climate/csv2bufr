@@ -170,7 +170,7 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=13,
             # codes_set(ibufr, 'movingObservingPlatformSpeed', m/s)
             
             codes_set(ibufr, 'stationType', 0)
-            codes_set(ibufr, 'instrumentationForWindMeasurement', 0)
+            codes_set(ibufr, 'instrumentationForWindMeasurement', 6)
             # codes_set(ibufr, 'measuringEquipmentType', 0)
             # codes_set(ibufr, 'temperatureObservationPrecision', 0.1)
             # codes_set(ibufr, 'solarAndInfraredRadiationCorrection', 0)
