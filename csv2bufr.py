@@ -205,8 +205,10 @@ def setAWSvariables(ibufr, row, nullValue=-999):
 
     setBUFRvalue(ibufr, 'latitude', row['LatitudeGPS(degN)'])  
     setBUFRvalue(ibufr, 'longitude', row['LongitudeGPS(degW)'])  
-    setBUFRvalue(ibufr, 'heightOfStationGroundAboveMeanSeaLevel', row['ElevationGPS(m)'])  
-    setBUFRvalue(ibufr, 'heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform', row['HeightSensorBoom(m)'])  
+    setBUFRvalue(ibufr, 'heightOfStationGroundAboveMeanSeaLevel', 
+                 row['ElevationGPS(m)'])  
+    setBUFRvalue(ibufr, 'heightOfSensorAboveLocalGroundOrDeckOfMarinePlatform', 
+                 row['HeightSensorBoom(m)'])  
 
 
     #Set monitoring time period (-10=10 minutes)
@@ -264,15 +266,10 @@ def getBUFR(df1, df2, outBUFR, ed=4, master=0, vers=13,
         try:
             
             #Get timestamp
-            print(str(int(r1['Year'])))
-            print(str(int(r1['DayOfMonth'])))
-            print(str(int(r1['HourOfDay(UTC)'])))
-
-            timestamp = datetime.strptime(str(r1['Year'])
-                                          +str(r1['DayOfMonth'])
-                                          +str(r1['HourOfDay(UTC)'])),
-                                          '%Y%m%d')
-            print(timestamp)
+            timestamp = datetime(int(r1['Year']), 
+                                 int(r1['MonthOfYear']), 
+                                 int(r1['DayOfMonth']), 
+                                 int(r1['HourOfDay(UTC)']), 0, 0)
             
             #Set table formatting and templating
             setTemplate(ibufr, timestamp)
